@@ -1,0 +1,8 @@
+%tr
+  %td= task.title
+  %td= task.description
+  %td= task.priopity
+  %td= task.status
+  %td= link_to 'Show', task
+  %td= link_to 'Edit', edit_task_path(task)
+  %td= link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete

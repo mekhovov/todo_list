@@ -1,0 +1,25 @@
+!!!
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title ToDo List
+
+    = stylesheet_link_tag    "application"
+    = yield :stylesheet
+    
+    = javascript_include_tag "application"
+    = yield :javascript
+
+    = csrf_meta_tags
+
+  %body
+
+    = render partial: "application/header"
+
+    - if flash
+      .flash-messages
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :class => "flash-#{name}" if msg.is_a?(String)
+    
+    = yield
+
+  = render partial: "application/footer"

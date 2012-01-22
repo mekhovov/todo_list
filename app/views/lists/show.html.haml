@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %h2 List:
+  %b Title:
+  = @list.title
+%p
+  %b Description:
+  = @list.description
+
+%p
+  %h2 Tasks:
+  %table
+    %tr
+      %th Title
+      %th Description
+      %th Priopity
+      %th Status
+      %th
+      %th
+      %th
+
+    = render @list.tasks
+
+%p
+  %h2 Add task:
+  = render 'tasks/add_task'
+
+%br
+
+= link_to 'Edit', edit_list_path(@list)
+\|
+= link_to 'Back', lists_path

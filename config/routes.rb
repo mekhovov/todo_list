@@ -1,4 +1,11 @@
 TodoList::Application.routes.draw do
+
+  resources :lists
+  resources :tasks
+    
+
+  root :to => "application#welcome"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
