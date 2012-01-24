@@ -28,7 +28,7 @@ gem 'haml-rails'
 
 gem 'enumerated_attribute'
 
-gem 'therubyracer', '>=0.8.2'
+#gem 'therubyracer', '>=0.8.2'
 
 # gem 'devise'
 # gem 'cancan'
@@ -53,7 +53,7 @@ group :test do
   gem 'rspec'
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
-  gem 'factory_girl_rails', '~> 1.2'
+  #gem 'factory_girl_rails', '~> 1.2'
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'rack-test'

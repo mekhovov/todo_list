@@ -1,15 +1,9 @@
-=link_to "Home", root_path
-|
-=link_to "Lists", lists_path
-(
-=List.count
-)
-|
-=link_to "Tasks", tasks_path
-(
-=Task.count
-)
-|
-%br
-%hr
-%br
+= link_to "ToDo list", root_url, :class => 'brand'
+
+%ul.nav
+  %li{:class => "" }
+    = link_to "Home", root_url
+  %li{:class => "#{current_page?(:controller => 'lists') ? 'active' : ''}" }
+    = link_to "Lists", lists_path
+  %li{:class => "#{current_page?(:controller => 'tasks') ? 'active' : ''}" }
+    = link_to "Tasks", tasks_path

@@ -1,25 +1,36 @@
 !!!
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html{:lang => "en"}
   %head
+    %meta{:charset => "utf-8"}/
     %title ToDo List
-
-    = stylesheet_link_tag    "application"
+    
+    = stylesheet_link_tag    "bootstrap", "stick", "site"
     = yield :stylesheet
     
-    = javascript_include_tag "application"
+    = javascript_include_tag ""
     = yield :javascript
 
     = csrf_meta_tags
 
+    %link{:href => "http://fonts.googleapis.com/css?family=Reenie+Beanie:regular", :rel => "stylesheet", :type => "text/css"}/
+
   %body
+    .topbar
+      .fill
+        .container
+          = render partial: "application/header"
 
-    = render partial: "application/header"
-
-    - if flash
-      .flash-messages
+    .container
+      = yield :div
+      - if flash
         - flash.each do |name, msg|
-          = content_tag :div, msg, :class => "flash-#{name}" if msg.is_a?(String)
-    
-    = yield
-
-  = render partial: "application/footer"
+          - if msg.is_a?(String)  
+            = content_tag :div, :class => "alert-message block-message #{name}" do
+              <a class="close" href="#">×</a>
+              <p><strong> 
+              = msg
+              </strong></p>
+  
+      = yield
+      
+      = render partial: "application/footer"

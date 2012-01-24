@@ -11,7 +11,7 @@
     = f.text_field :title
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, :rows => '10'
   .field
     = f.label :priopity
     = f.number_field :priopity, :in => 1...10
@@ -22,4 +22,4 @@
     = f.label :list_id
     = f.select :list_id, options_from_collection_for_select(@lists, :id, :title, @task.list_id)
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => 'btn success'
