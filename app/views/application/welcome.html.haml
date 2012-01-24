@@ -3,21 +3,31 @@
   %h1 ToDo List
   %p Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
   %p
-    %a.btn.primary.large Learn more &raquo;
+    = link_to "Let's start..", lists_path, :class => 'btn primary large'
 / Example row of columns
 .row
   .span-one-third
-    %h2 Heading
-    %p Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+    %h2 Релиз 1
     %p
-      %a.btn{:href => "#"} View details &raquo;
+      %ul
+        %li.done Как пользователь я хочу иметь возможность создавать/удалять списки задач и именовать их (список задач имеет наименование и описание).
+        %li.done Как пользователь я хочу иметь возможность создавать/удалять задачи в списках задач (задача имеет наименование, описание, состояние и приоритет).
+        %li.done Как пользователь я хочу иметь возможность помечать задачу как ‘в процессе’, ‘сделанная’.
+        %li Как пользователь я хочу иметь возможность просматривать список не сделанных задач.
+        %li Как пользователь я хочу иметь возможность просматривать список сделанных задач.
   .span-one-third
-    %h2 Heading
-    %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-    %p
-      %a.btn{:href => "#"} View details &raquo;
+    %h2 Релиз 2
+    %p 
+      %ul
+        %li Добавить регистрацию/авторизацию пользователей.
+        %li Пользователь должен видеть только свои задачи и списки задач.
+        %li Как пользователь я хочу иметь возможность создавать/удалять проекты, проект в себя включает списки задач. 
   .span-one-third
-    %h2 Heading
-    %p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    %p
-      %a.btn{:href => "#"} View details &raquo;
+    %h2 Релиз 3
+    %p 
+      %ul
+        %li Как пользователь я хочу иметь возможность приглашать других пользователей в свои проекты.
+        %li Как пользователь я хочу иметь возможность назначать задачи на других пользователей.
+        %li Как пользователь я хочу получать уведомление на email когда на меня назначают задачу.
+        %li Как пользователь я хочу получать уведомления на email когда меняется статус назначенных мною задач.
+        %li Как пользователь я хочу получать уведомления на email когда меняется статус назначенных на меня задач.

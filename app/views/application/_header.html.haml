@@ -1,7 +1,7 @@
 = link_to "ToDo list", root_url, :class => 'brand'
 
 %ul.nav
-  %li{:class => "" }
+  %li{:class => "" } 
     = link_to "Home", root_url
   %li{:class => "#{current_page?(:controller => 'lists') ? 'active' : ''}" }
     = link_to "Lists", lists_path

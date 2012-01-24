@@ -14,3 +14,7 @@ label {
   background-color: #d1eed1;
   border-color: #bfe7bf;
 }
+
+li.done {
+	list-style-image: url('../images/bullet_check.png')
+}
