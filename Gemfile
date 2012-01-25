@@ -28,7 +28,7 @@ gem 'haml-rails'
 
 gem 'enumerated_attribute'
 
-#gem 'therubyracer', '>=0.8.2'
+gem 'therubyracer', '>=0.8.2'
 
 # gem 'devise'
 # gem 'cancan'

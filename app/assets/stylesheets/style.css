@@ -1,0 +1,122 @@
+body {
+  padding-top: 60px;
+  /*background-image: url('../images/bg.gif');*/
+}
+
+.board {
+  
+}
+
+.field {
+	margin-bottom: 10px;
+}
+
+label {
+	padding-right: 10px;
+}
+
+.alert-message.block-message.notice {
+  background-color: #d1eed1;
+  border-color: #bfe7bf;
+}
+
+li.done {
+	list-style-image: url('../images/bullet_check.png');
+}
+
+.board .span4 {
+	border-left: 4px solid #D3E2F0;
+	margin-left: 0px;
+	height: 98px;
+	width: 196px;
+	
+	/*width: 150px;*/
+}
+
+.board .span4.in_progress_1 {
+    /*width: 396px;*/
+    border-left: none;
+}
+.board .span4.list.story, .board .span4.list_first {
+    border-left: none;
+    border-top: none;
+    width: 136px;
+}
+
+
+.row.show-grid.title h3 {
+	padding: 25px;
+	padding-top: 60px;
+	
+}
+.row.show-grid.list_top {
+	border-top: 4px solid #D3E2F0 ;
+}
+
+.board .span4.done {
+    /*border-right: 4px solid #D3E2F0;*/
+    width: 196px;
+}
+
+.board .row.show-grid {
+	margin-left: 0;
+	background: url('../images/grid.png') repeat 35px 0px;	
+	
+}
+
+.row.show-grid.title {
+	height: 98px;
+	background: none;
+	border: none
+}
+
+.row.show-grid.title .span4{
+	border: none
+}
+
+/*.board .todo.active {
+	background: #FFC;
+}*/
+
+.btn.active {
+	cursor: pointer;
+    font-size: 10px;
+    height: 10px;  
+}
+.sticker .btn.active {
+  font-size: 14px;
+  padding: 1px 3px 2px;
+  width: 15px;
+  height: 15px;
+  
+}
+.sticker_buttons {
+  display: none;
+}
+
+li.sticker:hover .sticker_buttons {
+  display: block;  
+}
+
+ul.stickers li.sticker.high a.sticker {
+  background:#fcc;
+}
+
+ul.stickers li.sticker.normal a.sticker {
+  background: #ffc
+}
+ul.stickers li.sticker.low a.sticker {
+  background:#cfc;
+}
+
+li.sticker a.sticker {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: alpha(opacity=75);
+  -khtml-opacity: 0.75;
+  -moz-opacity: 0.75;
+  opacity: 0.75;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}

@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string  :title
       t.text    :description
-      t.integer :priopity
+      t.enum    :priority
       t.enum    :status
       t.integer :list_id
 

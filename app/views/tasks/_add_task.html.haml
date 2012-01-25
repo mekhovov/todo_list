@@ -6,8 +6,8 @@
     = f.label :description
     = f.text_area :description, :rows => '10'
   .field
-    = f.label :priopity
-    = f.number_field :priopity, :in => 1...10
+    = f.label :priority
+    = f.enum_select :priority
   .field
     = f.label :status
     = f.enum_select :status

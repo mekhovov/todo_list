@@ -2,8 +2,25 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
-
+    # @lists = List.all
+    @board = {}
+    List.all.each do |list|
+      @board[list.id] = {}
+      @board[list.id][:list] = list
+      @board[list.id][:toDo], @board[list.id][:in_progress], @board[list.id][:done] = [], [], []
+      list.tasks.each do |task|
+        case task.status
+          when :toDo
+            @board[list.id][:toDo] << task 
+          when :in_progress
+            @board[list.id][:in_progress] << task 
+          when :done
+            @board[list.id][:done] << task 
+        end
+      end
+      @board[list.id][:max_tasks] = [@board[list.id][:toDo].count, @board[list.id][:in_progress].count, @board[list.id][:done].count].max
+      @board[list.id][:max_tasks] = @board[list.id][:max_tasks] == 0 ? 1 : @board[list.id][:max_tasks]
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lists }

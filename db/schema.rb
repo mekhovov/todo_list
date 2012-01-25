@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120122143816) do
   create_table "tasks", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "priopity"
+    t.string   "priority"
     t.string   "status"
     t.integer  "list_id"
     t.datetime "created_at"

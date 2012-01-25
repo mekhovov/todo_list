@@ -4,7 +4,8 @@ class Task < ActiveRecord::Base
   validates :title, :presence => true,
                     :length => { :minimum => 3 }
 
-  enum_attr :status, %w(^new in_progress done)
+  enum_attr :status, %w(^toDo in_progress done)
+  enum_attr :priority, %w(high ^normal low)
 
   
 end

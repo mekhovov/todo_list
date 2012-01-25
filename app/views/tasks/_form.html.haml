@@ -5,7 +5,6 @@
       %ul
         - @task.errors.full_messages.each do |msg|
           %li= msg
-
   .field
     = f.label :title
     = f.text_field :title
@@ -13,13 +12,14 @@
     = f.label :description
     = f.text_area :description, :rows => '10'
   .field
-    = f.label :priopity
-    = f.number_field :priopity, :in => 1...10
+    = f.label :priority
+    = f.enum_select :priority
   .field
     = f.label :status
     = f.enum_select :status
   .field
     = f.label :list_id
+    -@task.list_id = params[:list] if params[:list]
     = f.select :list_id, options_from_collection_for_select(@lists, :id, :title, @task.list_id)
   .actions
     = f.submit 'Save', :class => 'btn success'

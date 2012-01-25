@@ -1,23 +1,70 @@
-%h1 Listing lists
+= link_to 'add list', new_list_path, :class => 'btn info active'
+.board
+  .row.show-grid.title{ :title => "Story"}
+    .span4.list.story 
+      %h3 Story
+    .span4.list.todo 
+      %h3 ToDo
+    .span4.list.in_progress 
+      %h3 In Progress
+    .span4.list.in_progress 
+    .span4.list.done 
+      %h3 Done
+  - @board.keys.each do |list_id|
+    - show_list = true
+    - list = @board[list_id][:list]
+    - @board[list_id][:max_tasks].times do
+      .row.show-grid{ :title => "Story #{list.title}", :class => "#{show_list ? 'list_top' : ''}"}
+        .span4.list_first
+          - if show_list
+            %b
+              = list.title
+            (
+            = list.tasks.count
+            )
+            %br
+            = list.description
+            %br
+            = link_to 'S', list, :class => 'btn primary disabled active'
+            = link_to 'E', edit_list_path(list), :class => 'btn success disabled active'
+            = link_to 'D', list, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
+            %br
+            %br
+            = link_to 'add task', new_task_path(:list => list_id), :class => 'btn info disabled active'
+            - show_list = false
+        .span4.todo
+          - if @board[list_id][:toDo].any?
+            - task = @board[list_id][:toDo].pop
+            %ul.stickers
+              %li.sticker{ :class => "#{task.priority}"}
+                %span.sticker_buttons
+                  = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                = link_to edit_task_path(task), :class => 'sticker' do
+                  %h2
+                    = task.title
+                  %p
+                    = task.description
+        - 2.times do |n|
+          .span4.in_progress{:class => "in_progress_#{n}"}
+            %ul.stickers
+              - if @board[list_id][:in_progress].any?
+                - task = @board[list_id][:in_progress].pop
+                %li.sticker{ :class => "#{task.priority}"}
+                  %span.sticker_buttons
+                    = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                  = link_to edit_task_path(task), :class => 'sticker' do
+                    %h2= task.title
+                    %p
+                      = task.description
+        .span4.done
+          - if @board[list_id][:done].any?
+            - task = @board[list_id][:done].pop
+            %ul.stickers
+              %li.sticker{ :class => "#{task.priority}"}
+                %span.sticker_buttons
+                  = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                = link_to edit_task_path(task), :class => 'sticker' do
+                  %h2= task.title
+                  %p
+                    = task.description
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Tasks in list
-    %th
-    %th
-    %th
-
-  - @lists.each do |list|
-    %tr
-      %td= list.title
-      %td= list.description
-      %td= list.tasks.count
-      %td= link_to 'Show', list, :class => 'btn primary disabled'
-      %td= link_to 'Edit', edit_list_path(list), :class => 'btn success disabled'
-      %td= link_to 'Delete', list, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
-
-%br
-
-= link_to 'New List', new_list_path, :class => 'btn info'
