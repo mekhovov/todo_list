@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def welcome
   	if current_user
-      render 'home'
+      redirect_to :projects
     else
       render 'welcome'
     end

@@ -1,0 +1,90 @@
+.board
+  .page-header
+    .row.show-grid.title{ :title => "Story"}
+      - count = counts @stories
+      .span4.list.story 
+        %h3 
+          Story
+          %span.label= count[:story]
+      .span4.list.todo 
+        %h3 
+          ToDo
+          %span.label.important= count[:toDo]
+      .span4.list.in_progress 
+        %h3 
+          In Progress
+          %span.label.warning= count[:in_progress]
+      .span4.list.in_progress 
+      .span4.list.done 
+        %h3 
+          Done
+          %span.label.success= count[:done]
+  - board = fill_board @stories
+  - board.keys.each do |story_id|
+    - show_story = true
+    - story = board[story_id][:story]
+    - board[story_id][:max_tasks].times do
+      .row.show-grid{ :title => "Story #{story.title}", :class => "#{show_story ? 'list_top' : ''}"}
+        .span4.list_first
+          - if show_story
+            %b
+              = story.title
+              / %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
+              %span.label= story.tasks.count
+            %br
+            = story.description
+            %br
+            = link_to 'S', story, :class => 'btn primary disabled active'
+            = link_to 'E', edit_story_path(story), :class => 'btn success disabled active'
+            = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
+            %br
+            %br
+            = link_to 'add task', new_task_path(:story => story_id), :class => 'btn info disabled active'
+            - show_story = false
+        .span4.todo
+          - if board[story_id][:toDo].any?
+            - task = board[story_id][:toDo].pop
+            %ul.stickers
+              %li.sticker{ :class => "#{task.priority}"}
+                %span.sticker_hidden
+                  = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                = link_to edit_task_path(task), :class => 'sticker' do
+                  %h2
+                    = task.title
+                  %p
+                    = task.description
+                  %span.sticker_hidden
+                    %br
+                    %span.label.success
+                      = distance_of_time_in_words_to_now task.updated_at
+        - 2.times do |n|
+          .span4.in_progress{:class => "in_progress_#{n}"}
+            %ul.stickers
+              - if board[story_id][:in_progress].any?
+                - task = board[story_id][:in_progress].pop
+                %li.sticker{ :class => "#{task.priority}"}
+                  %span.sticker_hidden
+                    = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                  = link_to edit_task_path(task), :class => 'sticker' do
+                    %h2= task.title
+                    %p
+                      = task.description
+                    %span.sticker_hidden
+                      %br
+                      %span.label.success
+                        = distance_of_time_in_words_to_now task.updated_at
+        .span4.done
+          - if board[story_id][:done].any?
+            - task = board[story_id][:done].pop
+            %ul.stickers
+              %li.sticker{ :class => "#{task.priority}"}
+                %span.sticker_hidden
+                  = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
+                = link_to edit_task_path(task), :class => 'sticker' do
+                  %h2= task.title
+                  %p
+                    = task.description
+                  %span.sticker_hidden
+                    %br
+                    %span.label.success
+                      = distance_of_time_in_words_to_now task.updated_at

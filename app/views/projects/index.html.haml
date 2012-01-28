@@ -1,0 +1,49 @@
+.sidebar
+  .page-header
+    %br
+    %br
+    - if @projects
+      = link_to 'New Project', new_project_path, :class => 'btn primary'
+  %h3 Assigned to you
+  %p 
+    = render 'tasks/assingned'
+
+.content.projects
+  .page-header
+    %h1 ToDo List
+    %small Your Projects
+  .row
+    - unless @projects
+      .span6
+        %h3 Create your first Project
+      .span6
+        = link_to 'New Project', new_project_path, :class => 'btn primary large'
+    -else
+      - @projects.each do |project|
+        .span3
+          = link_to project do 
+            %h3= project.name
+            %h2= project.description
+            %p
+              %b
+                Owner:
+              =User.find_by_id(project.owner_id).email
+            %br
+            %p
+              %b
+                %span.label.warning=project.users.count 
+                Users
+                %ul
+                  - project.users.each do |user|
+                    %li=user.email
+              %b
+                %span.label.important=project.stories.count 
+                Stories
+                %ul
+                  -project.stories.each do |story|
+                    %li
+                      %span.label.success=story.tasks.count
+                      =story.title
+            %p 
+              = link_to 'E', edit_project_path(project), :class => 'btn success disabled small active'
+              = link_to 'D', project, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled small active'

@@ -8,6 +8,7 @@
       %th Priority
       %th Status
       %th Story
+      %th Project
       %th
 
   - @tasks.each do |task|
@@ -17,6 +18,7 @@
       %td= task.priority
       %td= task.status
       %td= task.story.title if task.story
+      %td= Project.find_by_id(task.story.project_id).name if task.story.project_id
       %td
         = link_to 'Show', task, :class => 'btn primary disabled'
         = link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
