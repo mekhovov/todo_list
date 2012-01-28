@@ -58,9 +58,7 @@
                   %span.sticker_buttons
                     %br
                     %span.label.success
-                      = (Time.now - task.created_at.to_i).day
-                    %span.label.info
-                      days
+                      = distance_of_time_in_words_to_now task.updated_at
         - 2.times do |n|
           .span4.in_progress{:class => "in_progress_#{n}"}
             %ul.stickers
@@ -76,9 +74,7 @@
                     %span.sticker_buttons
                       %br
                       %span.label.success
-                        = (Time.now - task.created_at.to_i).day
-                      %span.label.info
-                        days
+                        = distance_of_time_in_words_to_now task.updated_at
         .span4.done
           - if board[story_id][:done].any?
             - task = board[story_id][:done].pop
@@ -93,7 +89,5 @@
                   %span.sticker_buttons
                     %br
                     %span.label.success
-                      = (Time.now - task.created_at.to_i).day
-                    %span.label.info
-                      days
+                      = distance_of_time_in_words_to_now task.updated_at
 
