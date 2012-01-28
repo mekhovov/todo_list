@@ -3,9 +3,6 @@ body {
   /*background-image: url('../images/bg.gif');*/
 }
 
-.board {
-  
-}
 
 .field {
 	margin-bottom: 10px;
@@ -96,6 +93,7 @@ li.done {
 
 li.sticker:hover .sticker_buttons {
   display: block;  
+  
 }
 
 ul.stickers li.sticker.high a.sticker {
