@@ -5,11 +5,11 @@ one:
   description: MyText
   priopity: 1
   status: 1
-  list_id: 1
+  story_id: 1
 
 two:
   title: MyString
   description: MyText
   priopity: 1
   status: 1
-  list_id: 1
+  story_id: 1

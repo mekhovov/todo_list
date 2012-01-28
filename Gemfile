@@ -27,6 +27,7 @@ gem 'haml'
 gem 'haml-rails' 
 
 gem 'enumerated_attribute'
+gem 'devise'
 
 gem 'therubyracer', '>=0.8.2'
 
@@ -58,5 +59,5 @@ group :test do
   gem 'database_cleaner'
   gem 'rack-test'
   gem 'rspec'
-  gem 'rcov'
+  #gem 'rcov'
 end

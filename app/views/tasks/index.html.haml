@@ -1,15 +1,14 @@
 %h1 Listing tasks
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Priority
-    %th Status
-    %th List
-    %th
-    %th
-    %th
+%table.zebra-striped
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Priority
+      %th Status
+      %th Story
+      %th
 
   - @tasks.each do |task|
     %tr
@@ -17,10 +16,11 @@
       %td= task.description
       %td= task.priority
       %td= task.status
-      %td= task.list_id
-      %td= link_to 'Show', task, :class => 'btn primary disabled'
-      %td= link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
-      %td= link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
+      %td= task.story.title if task.story
+      %td
+        = link_to 'Show', task, :class => 'btn primary disabled'
+        = link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
+        = link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
 
 %br
 

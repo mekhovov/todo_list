@@ -1,4 +1,4 @@
-= form_for(@list.tasks.build) do |f|
+= form_for(@story.tasks.build) do |f|
   .field
     = f.label :title
     = f.text_field :title
@@ -12,6 +12,6 @@
     = f.label :status
     = f.enum_select :status
   .field
-    = f.hidden_field :list_id
+    = f.hidden_field :story_id
   .actions
     = f.submit 'Save', :class => 'btn success'

@@ -3,7 +3,8 @@
   %td= task.description
   %td= task.priority
   %td= task.status
-  %td= link_to 'Show', task, :class => 'btn primary disabled'
-  %td= link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
-  %td= link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
+  %td
+    = link_to 'Show', task, :class => 'btn primary disabled'
+    = link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
+    = link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
   

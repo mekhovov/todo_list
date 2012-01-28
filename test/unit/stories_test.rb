@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ListsTest < ActiveSupport::TestCase
+class StoriesTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

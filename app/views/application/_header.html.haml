@@ -1,9 +1,19 @@
-= link_to "ToDo list", root_url, :class => 'brand'
+= link_to "ToDo List", root_url, :class => 'brand'
 
-%ul.nav
-  %li{:class => "" } 
-    = link_to "Home", root_url
-  %li{:class => "#{current_page?(:controller => 'lists') ? 'active' : ''}" }
-    = link_to "Lists", lists_path
-  %li{:class => "#{current_page?(:controller => 'tasks') ? 'active' : ''}" }
-    = link_to "Tasks", tasks_path
+-if user_signed_in?
+  %ul.nav
+    %li{:class => "" } 
+      = link_to "Home", root_url
+    %li{:class => "#{current_page?(:controller => 'stories') ? 'active' : ''}" }
+      = link_to "Stories", stories_path
+    %li{:class => "#{current_page?(:controller => 'tasks') ? 'active' : ''}" }
+      = link_to "Tasks", tasks_path
+  %p.pull-right
+    Logged in as: 
+    = link_to current_user.email, user_path(current_user)
+    = link_to 'Log Out', logout_path, :class => 'btn small info'
+-else
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "pull-right"}) do |f|
+    = f.email_field :email, :class => 'input-small', :placeholder => "E-mail"
+    = f.password_field :password, :class => 'input-small', :placeholder => "Password"
+    = f.submit "Sign in", :class => 'btn small info'

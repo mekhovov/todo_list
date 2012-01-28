@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class ListsHelperTest < ActionView::TestCase
+class StoriesHelperTest < ActionView::TestCase
 end

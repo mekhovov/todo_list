@@ -18,8 +18,8 @@
     = f.label :status
     = f.enum_select :status
   .field
-    = f.label :list_id
-    -@task.list_id = params[:list] if params[:list]
-    = f.select :list_id, options_from_collection_for_select(@lists, :id, :title, @task.list_id)
+    = f.label :story_id
+    -@task.story_id = params[:story] if params[:story]
+    = f.select :story_id, options_from_collection_for_select(@stories, :id, :title, @task.story_id)
   .actions
     = f.submit 'Save', :class => 'btn success'

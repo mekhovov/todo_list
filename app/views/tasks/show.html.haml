@@ -1,21 +1,23 @@
+%br
 %p#notice= notice
 
-%p
-  %b Title:
-  = @task.title
-%p
-  %b Description:
-  = @task.description
-%p
-  %b Priority:
-  = @task.priority
-%p
-  %b Status:
-  = @task.status
-%p
-  %b List:
-  = @task.list_id
+%h2 
+  Title:
+  %b= @task.title
+%h2 
+  Description:
+  %b= @task.description
+%h2 
+  Priority:
+  %b= @task.priority
+%h2 
+  Status:
+  %b= @task.status
+%h2 
+  Story:
+  %b= @task.story_id
 
+%br
 = link_to 'Edit', edit_task_path(@task), :class => 'btn info'
 
 = link_to 'Back', tasks_path, :class => 'btn'

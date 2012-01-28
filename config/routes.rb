@@ -1,8 +1,16 @@
 TodoList::Application.routes.draw do
 
-  resources :lists
+  devise_for :users
+
+  resources :stories
   resources :tasks
-    
+  resources :users
+
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "register", :to => "devise/registrations#new"
+  end    
 
   root :to => "application#welcome"
 

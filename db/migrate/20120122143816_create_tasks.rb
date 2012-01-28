@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.text    :description
       t.enum    :priority
       t.enum    :status
-      t.integer :list_id
+      t.integer :story_id
 
       t.timestamps
     end

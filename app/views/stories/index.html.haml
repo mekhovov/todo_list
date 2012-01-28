@@ -1,40 +1,51 @@
-= link_to 'add list', new_list_path, :class => 'btn info active'
+%br
+= link_to 'Add Story', new_story_path, :class => 'btn info active'
+
 .board
+  
   .row.show-grid.title{ :title => "Story"}
+    - count = counts @stories
     .span4.list.story 
-      %h3 Story
+      %h3 
+        Story
+        %span.label= count[:story]
     .span4.list.todo 
-      %h3 ToDo
+      %h3 
+        ToDo
+        %span.label.important= count[:toDo]
     .span4.list.in_progress 
-      %h3 In Progress
+      %h3 
+        In Progress
+        %span.label.warning= count[:in_progress]
     .span4.list.in_progress 
     .span4.list.done 
-      %h3 Done
-  - @board.keys.each do |list_id|
-    - show_list = true
-    - list = @board[list_id][:list]
-    - @board[list_id][:max_tasks].times do
-      .row.show-grid{ :title => "Story #{list.title}", :class => "#{show_list ? 'list_top' : ''}"}
+      %h3 
+        Done
+        %span.label.success= count[:done]
+  - board = fill_board @stories
+  - board.keys.each do |story_id|
+    - show_story = true
+    - story = board[story_id][:story]
+    - board[story_id][:max_tasks].times do
+      .row.show-grid{ :title => "Story #{story.title}", :class => "#{show_story ? 'list_top' : ''}"}
         .span4.list_first
-          - if show_list
+          - if show_story
             %b
-              = list.title
-            (
-            = list.tasks.count
-            )
+              = story.title
+              %span.label= story.tasks.count
             %br
-            = list.description
+            = story.description
             %br
-            = link_to 'S', list, :class => 'btn primary disabled active'
-            = link_to 'E', edit_list_path(list), :class => 'btn success disabled active'
-            = link_to 'D', list, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
+            = link_to 'S', story, :class => 'btn primary disabled active'
+            = link_to 'E', edit_story_path(story), :class => 'btn success disabled active'
+            = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
             %br
             %br
-            = link_to 'add task', new_task_path(:list => list_id), :class => 'btn info disabled active'
-            - show_list = false
+            = link_to 'add task', new_task_path(:story => story_id), :class => 'btn info disabled active'
+            - show_story = false
         .span4.todo
-          - if @board[list_id][:toDo].any?
-            - task = @board[list_id][:toDo].pop
+          - if board[story_id][:toDo].any?
+            - task = board[story_id][:toDo].pop
             %ul.stickers
               %li.sticker{ :class => "#{task.priority}"}
                 %span.sticker_buttons
@@ -47,8 +58,8 @@
         - 2.times do |n|
           .span4.in_progress{:class => "in_progress_#{n}"}
             %ul.stickers
-              - if @board[list_id][:in_progress].any?
-                - task = @board[list_id][:in_progress].pop
+              - if board[story_id][:in_progress].any?
+                - task = board[story_id][:in_progress].pop
                 %li.sticker{ :class => "#{task.priority}"}
                   %span.sticker_buttons
                     = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
@@ -57,8 +68,8 @@
                     %p
                       = task.description
         .span4.done
-          - if @board[list_id][:done].any?
-            - task = @board[list_id][:done].pop
+          - if board[story_id][:done].any?
+            - task = board[story_id][:done].pop
             %ul.stickers
               %li.sticker{ :class => "#{task.priority}"}
                 %span.sticker_buttons
