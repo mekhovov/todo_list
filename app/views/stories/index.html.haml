@@ -48,15 +48,17 @@
             - task = board[story_id][:toDo].pop
             %ul.stickers
               %li.sticker{ :class => "#{task.priority}"}
-                %span.sticker_buttons
+                %span.sticker_hidden
                   = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
                 = link_to edit_task_path(task), :class => 'sticker' do
                   %h2
                     = task.title
                   %p
                     = task.description
-                  %span.sticker_buttons
+                  %span.sticker_hidden
                     %br
+                    %span.label
+                      u
                     %span.label.success
                       = distance_of_time_in_words_to_now task.updated_at
         - 2.times do |n|
@@ -65,14 +67,16 @@
               - if board[story_id][:in_progress].any?
                 - task = board[story_id][:in_progress].pop
                 %li.sticker{ :class => "#{task.priority}"}
-                  %span.sticker_buttons
+                  %span.sticker_hidden
                     = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
                   = link_to edit_task_path(task), :class => 'sticker' do
                     %h2= task.title
                     %p
                       = task.description
-                    %span.sticker_buttons
+                    %span.sticker_hidden
                       %br
+                      %span.label
+                        u
                       %span.label.success
                         = distance_of_time_in_words_to_now task.updated_at
         .span4.done
@@ -80,14 +84,16 @@
             - task = board[story_id][:done].pop
             %ul.stickers
               %li.sticker{ :class => "#{task.priority}"}
-                %span.sticker_buttons
+                %span.sticker_hidden
                   = link_to 'X', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active small'
                 = link_to edit_task_path(task), :class => 'sticker' do
                   %h2= task.title
                   %p
                     = task.description
-                  %span.sticker_buttons
+                  %span.sticker_hidden
                     %br
+                    %span.label
+                      u
                     %span.label.success
                       = distance_of_time_in_words_to_now task.updated_at
 

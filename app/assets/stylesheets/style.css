@@ -87,11 +87,16 @@ li.done {
   height: 15px;
   
 }
-.sticker_buttons {
+.sticker_hidden {
   display: none;
 }
 
-li.sticker:hover .sticker_buttons {
+.sticker_hidden .label{
+  text-transform: none;
+  font-size: 8px;
+}
+
+li.sticker:hover .sticker_hidden {
   display: block;  
   
 }
@@ -140,11 +145,6 @@ body {
 body .container .row {
   background: url('../images/wash-white-30.png');
 }*/
-
-
-
-
-
 
 
  /* Override some defaults */
