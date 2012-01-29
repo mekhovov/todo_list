@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = []
+    Project.find_all_by_owner_id(current_user.id).each{|proj| proj.stories.each{|story| @tasks += story.tasks}}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    @stories = Story.all
+    @stories = Project.find_by_id(Story.find_by_id(params[:story]).project_id).stories
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,18 +37,18 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
-    @stories = Story.all
+    @stories = Project.find_by_id(Story.find_by_id(@task.story_id).project_id).stories
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-    @stories = Story.all
+    back_to_prj = Project.find_by_id(Story.find_by_id(@task.story_id).project_id)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to :projects, notice: 'Task was successfully created.' }
+        format.html { redirect_to back_to_prj, notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -60,10 +61,11 @@ class TasksController < ApplicationController
   # PUT /tasks/1.json
   def update
     @task = Task.find(params[:id])
+    back_to_prj = Project.find_by_id(Story.find_by_id(@task.story_id).project_id)
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to :projects, notice: 'Task was successfully updated.' }
+        format.html { redirect_to back_to_prj, notice: 'Task was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

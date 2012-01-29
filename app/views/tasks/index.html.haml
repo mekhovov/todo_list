@@ -1,29 +1,43 @@
-%h1 Listing tasks
+.sidebar
+  .page-header
+    %br
+    %br
+    -if @tasks.empty?
+      %h3 No tasks yet
+      %h2 
+        Add project:
+        = link_to 'New Project', new_project_path, :class => 'btn primary'
+      %br
+  %h3 Assigned to you
+  %p 
+    = render 'tasks/assingned'
 
-%table.zebra-striped
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Priority
-      %th Status
-      %th Story
-      %th Project
-      %th
+.content.projects
+  .page-header
+    %h1 ToDo List
+    %small Your Tasks
+  .row
+    -unless @tasks.empty?
+      %table.zebra-striped
+        %thead
+          %tr
+            %th Title
+            %th Description
+            %th Priority
+            %th Status
+            %th Story
+            %th Project
+            %th
 
-  - @tasks.each do |task|
-    %tr
-      %td= task.title
-      %td= task.description
-      %td= task.priority
-      %td= task.status
-      %td= task.story.title if task.story
-      %td= Project.find_by_id(task.story.project_id).name if task.story.project_id
-      %td
-        = link_to 'Show', task, :class => 'btn primary disabled'
-        = link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
-        = link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'
-
-%br
-
-= link_to 'New Task', new_task_path, :class => 'btn info'
+        - @tasks.each do |task|
+          %tr
+            %td= task.title
+            %td= task.description
+            %td= task.priority
+            %td= task.status
+            %td= task.story.title if task.story
+            %td= Project.find_by_id(task.story.project_id).name if task.story.project_id
+            %td
+              = link_to 'Show', task, :class => 'btn primary disabled'
+              = link_to 'Edit', edit_task_path(task), :class => 'btn success disabled'
+              = link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled'

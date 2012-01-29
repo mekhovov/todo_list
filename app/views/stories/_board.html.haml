@@ -4,21 +4,21 @@
       - count = counts @stories
       .span4.list.story 
         %h3 
-          Story
           %span.label= count[:story]
+          Story
       .span4.list.todo 
         %h3 
-          ToDo
           %span.label.important= count[:toDo]
+          ToDo
       .span4.list.in_progress 
         %h3 
-          In Progress
           %span.label.warning= count[:in_progress]
+          In Progress
       .span4.list.in_progress 
       .span4.list.done 
-        %h3 
-          Done
+        %h3
           %span.label.success= count[:done]
+          Done
   - board = fill_board @stories
   - board.keys.each do |story_id|
     - show_story = true
@@ -29,17 +29,17 @@
           - if show_story
             %b
               = story.title
-              / %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
               %span.label= story.tasks.count
+            %br
+            %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
             %br
             = story.description
             %br
-            = link_to 'S', story, :class => 'btn primary disabled active'
-            = link_to 'E', edit_story_path(story), :class => 'btn success disabled active'
-            = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
-            %br
-            %br
-            = link_to 'add task', new_task_path(:story => story_id), :class => 'btn info disabled active'
+            = link_to '+ task', new_task_path(:story => story_id), :class => 'btn info disabled active'
+            %span.story_hidden
+              = link_to 'S', story, :class => 'btn primary disabled active'
+              = link_to 'E', edit_story_path(story, :project => story.project_id), :class => 'btn success disabled active'
+              = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
             - show_story = false
         .span4.todo
           - if board[story_id][:toDo].any?

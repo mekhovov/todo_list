@@ -91,15 +91,30 @@ li.done {
   display: none;
 }
 
+li.sticker:hover .sticker_hidden {
+  display: block;  
+  
+}
+
+.story_hidden {
+  display: none;
+}
+
+.story_hidden .btn {
+  font-size: 8px;
+  margin: 0;
+  padding: 3px 5px;
+}
+.list_first:hover .story_hidden {
+  display: block;  
+  
+}
+
 .sticker_hidden .label{
   text-transform: none;
   font-size: 8px;
 }
 
-li.sticker:hover .sticker_hidden {
-  display: block;  
-  
-}
 
 ul.stickers li.sticker.high a.sticker {
   background:#fcc;
@@ -124,6 +139,15 @@ li.sticker a.sticker {
   box-shadow: none;
 }
 
+.list h3 {
+  font-family: 'Cabin Sketch',Arial,sans-serif;
+  font-size: 24px;
+}
+
+.list h3 .label {
+  font-family: Arial,sans-serif;
+  font-size: 18px;
+}
 
 body .topbar .fill {
   /*background: url('../images/frame_background.png');*/

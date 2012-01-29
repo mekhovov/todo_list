@@ -2,7 +2,8 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = []
+    Project.find_all_by_owner_id(current_user.id).each{|proj| @stories += proj.stories}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +47,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to :projects, notice: 'Story was successfully created.' }
+        format.html { redirect_to Project.find_by_id(@story.project_id), notice: 'Story was successfully created.' }
         format.json { render json: @story, status: :created, location: @story }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        format.html { redirect_to :projects, notice: 'Story was successfully updated.' }
+        format.html { redirect_to Project.find_by_id(@story.project_id), notice: 'Story was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

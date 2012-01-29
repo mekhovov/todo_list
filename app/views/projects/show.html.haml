@@ -3,7 +3,7 @@
   .page-header
     %br
     %br
-    = link_to 'Add Story', new_story_path(:project => @project_id), :class => 'btn primary'
+    = link_to 'Add Story', new_story_path(:project => @project.id), :class => 'btn primary'
   %h3= @project.name
   %h2= @project.description
   %p
