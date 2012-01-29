@@ -1,7 +1,8 @@
-%h1 Editing Story
-
-= render 'form'
-
-= link_to 'Show', @story, :class => 'btn info'
-
-= link_to 'Back', :back, :class => 'btn'
+.content.projects
+  .page-header
+    %h1 Edit Story
+    %small=@story.title
+  .row
+    = render 'form'
+    = link_to 'Show', @story, :class => 'btn info'
+    = link_to 'Back', :back, :class => 'btn'

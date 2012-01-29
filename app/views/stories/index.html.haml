@@ -1,18 +1,4 @@
-.sidebar
-  .page-header
-    %br
-    %br
-    -if @stories.empty?
-      %h3 No Stories yet
-      %h2 
-        Add project:
-        = link_to 'New Project', new_project_path, :class => 'btn primary'
-    -else
-      = link_to 'Add Story', new_story_path, :class => 'btn primary'
-    %br
-  %h3 Assigned to you
-  %p 
-    = render 'tasks/assingned'
+= render 'sidebar'
 
 =render :partial => 'board'
 

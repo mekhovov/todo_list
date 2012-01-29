@@ -1,16 +1,4 @@
-.sidebar
-  .page-header
-    %br
-    %br
-    -if @tasks.empty?
-      %h3 No tasks yet
-      %h2 
-        Add project:
-        = link_to 'New Project', new_project_path, :class => 'btn primary'
-      %br
-  %h3 Assigned to you
-  %p 
-    = render 'tasks/assingned'
+= render 'sidebar'
 
 .content.projects
   .page-header

@@ -1,5 +1,7 @@
-%h1 New project
+.content.projects
+  .page-header
+    %h1 Add Project
+  .row
+    = render 'form'
+    = link_to 'Back', projects_path, :class => 'btn'
 
-= render 'form'
-
-= link_to 'Back', projects_path, :class => 'btn'

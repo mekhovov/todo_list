@@ -1,0 +1,17 @@
+.span4.list.story 
+  %h3 
+    %span.label= count[:story]
+    Story
+.span4.list.todo 
+  %h3 
+    %span.label.important= count[:toDo]
+    ToDo
+.span4.list.in_progress 
+  %h3 
+    %span.label.warning= count[:in_progress]
+    In Progress
+.span4.list.in_progress 
+.span4.list.done 
+  %h3
+    %span.label.success= count[:done]
+    Done

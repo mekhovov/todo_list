@@ -1,25 +1,23 @@
-%br
-%p#notice= notice
+.content.projects
+  .page-header
+    %h1 
+      Story:
+      = @story.title
+    %small
+      = link_to 'Edit', edit_story_path(@story), :class => 'btn info'
+      = @story.description
+  .row
+    %h3 Tasks:
+    %table.zebra-striped
+      %thead
+        %tr
+          %th Title
+          %th Description
+          %th Priority
+          %th Status
+          %th
 
-%h1 
-  Story: 
-  = @story.title
-  = link_to 'Edit', edit_story_path(@story), :class => 'btn info'
+      = render @story.tasks
+    = link_to 'Back', :back, :class => 'btn'
 
-%h3 Tasks:
-%table.zebra-striped
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Priority
-      %th Status
-      %th
-
-  = render @story.tasks
-
-%h3 Add task:
 = render 'tasks/add_task'
-
-%br
-= link_to 'Back', :back, :class => 'btn'

@@ -1,0 +1,14 @@
+- if show_story
+  %b
+    = story.title
+    %span.label= story.tasks.count
+  %br
+  %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
+  %br
+  = story.description
+  %br
+  = link_to '+ task', new_task_path(:story => story.id), :class => 'btn info disabled active'
+  %span.story_hidden
+    = link_to 'S', story, :class => 'btn primary disabled active'
+    = link_to 'E', edit_story_path(story, :project => story.project_id), :class => 'btn success disabled active'
+    = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'

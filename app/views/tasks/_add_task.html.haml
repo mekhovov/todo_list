@@ -1,17 +1,22 @@
-= form_for(@story.tasks.build) do |f|
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description, :rows => '10'
-  .field
-    = f.label :priority
-    = f.enum_select :priority
-  .field
-    = f.label :status
-    = f.enum_select :status
-  .field
-    = f.hidden_field :story_id
-  .actions
-    = f.submit 'Save', :class => 'btn success'
+.sidebar
+  .page-header
+    %br
+    %br
+    %h3 Add Task
+  = form_for(@story.tasks.build) do |f|
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :description
+      = f.text_area :description, :rows => '5'
+    .field
+      = f.label :priority
+      = f.enum_select :priority
+    .field
+      = f.label :status
+      = f.enum_select :status
+    .field
+      = f.hidden_field :story_id
+    .actions
+      = f.submit 'Save', :class => 'btn success'

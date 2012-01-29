@@ -1,0 +1,9 @@
+%hr
+-todo = get_todo
+%h3
+  %span.label.warning=todo.count
+  ToDo
+%p 
+%ul
+  -todo.each do |task|
+    %li=task.title

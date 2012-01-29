@@ -1,12 +1,4 @@
-.sidebar
-  .page-header
-    %br
-    %br
-    - if @projects
-      = link_to 'New Project', new_project_path, :class => 'btn primary'
-  %h3 Assigned to you
-  %p 
-    = render 'tasks/assingned'
+= render 'sidebar'
 
 .content.projects
   .page-header
