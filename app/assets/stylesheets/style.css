@@ -30,6 +30,9 @@ li.done {
 	/*width: 150px;*/
 }
 
+.board .show-grid .list_first {
+  background: white;
+}
 .board .span4.in_progress_1 {
     /*width: 396px;*/
     border-left: none;
@@ -91,10 +94,6 @@ li.done {
   display: none;
 }
 
-li.sticker:hover .sticker_hidden {
-  display: block;  
-  
-}
 
 .story_hidden {
   display: none;
@@ -105,6 +104,13 @@ li.sticker:hover .sticker_hidden {
   margin: 0;
   padding: 3px 5px;
 }
+
+.story_hidden .button {
+  margin: 5px 1px;
+  
+  
+}
+
 .list_first:hover .story_hidden {
   display: block;  
   

@@ -1,4 +1,11 @@
 - if show_story
+  .story_hidden
+    = link_to story, :class => 'button' do
+      %span.icon.icon120{:title => 'Show Story'}
+    = link_to edit_story_path(story, :project => story.project_id), :class => 'button' do
+      %span.icon.icon145{:title => 'Edit Story'}
+    = link_to story, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
+      %span.icon.icon56{:title => 'Delete Story'}
   %b
     = story.title
     %span.label= story.tasks.count
@@ -7,8 +14,5 @@
   %br
   = story.description
   %br
-  = link_to '+ task', new_task_path(:story => story.id), :class => 'btn info disabled active'
-  %span.story_hidden
-    = link_to 'S', story, :class => 'btn primary disabled active'
-    = link_to 'E', edit_story_path(story, :project => story.project_id), :class => 'btn success disabled active'
-    = link_to 'D', story, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled active'
+  = link_to new_task_path(:story => story.id), :class => 'button' do
+    %span.icon.icon3{:title => 'Add Task'}
