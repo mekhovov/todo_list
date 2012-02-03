@@ -12,10 +12,11 @@
         = link_to 'New Project', new_project_path, :class => 'btn primary large'
     -else
       - @projects.each do |project|
-        .span3
+        .span3.project
           = link_to project do 
             %h3= project.name
             %h2= project.description
+            %hr
             %p
               %b
                 Owner:
@@ -37,5 +38,8 @@
                       %span.label.success=story.tasks.count
                       =story.title
             %p 
-              = link_to 'E', edit_project_path(project), :class => 'btn success disabled small active'
-              = link_to 'D', project, :confirm => 'Are you sure?', :method => :delete, :class => 'btn danger disabled small active'
+              = link_to edit_project_path(project), :class => 'button' do
+                %span.icon.icon145{:title => 'Edit Project'}
+              = link_to project, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
+                %span.icon.icon56{:title => 'Delete Project'}
+

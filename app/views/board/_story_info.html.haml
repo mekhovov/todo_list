@@ -1,4 +1,7 @@
 - if show_story
+  %b
+    = story.title
+    %span.label= story.tasks.count
   .story_hidden
     = link_to story, :class => 'button' do
       %span.icon.icon120{:title => 'Show Story'}
@@ -6,13 +9,11 @@
       %span.icon.icon145{:title => 'Edit Story'}
     = link_to story, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
       %span.icon.icon56{:title => 'Delete Story'}
-  %b
-    = story.title
-    %span.label= story.tasks.count
-  %br
-  %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
-  %br
-  = story.description
-  %br
+  .story_visible
+    %br
+    %span.label.success=Project.find_by_id(story.project_id).name if story.project_id
+    %br
+    = story.description
+    %br
   = link_to new_task_path(:story => story.id), :class => 'button' do
     %span.icon.icon3{:title => 'Add Task'}

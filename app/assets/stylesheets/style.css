@@ -1,6 +1,6 @@
 body {
   padding-top: 60px;
-  /*background-image: url('../images/bg.gif');*/
+  background: url('../images/wallpaper.png') repeat-x;
 }
 
 
@@ -90,10 +90,6 @@ li.done {
   height: 15px;
   
 }
-.sticker_hidden {
-  display: none;
-}
-
 
 .story_hidden {
   display: none;
@@ -107,8 +103,6 @@ li.done {
 
 .story_hidden .button {
   margin: 5px 1px;
-  
-  
 }
 
 .list_first:hover .story_hidden {
@@ -116,11 +110,43 @@ li.done {
   
 }
 
+.story_visible {
+  display: inline;
+}
+.list_first:hover .story_visible {
+  display: none;  
+  
+}
+
+.hero-unit {
+  background: url(../images/gp.png) repeat;
+}
+
+
+.project {
+  background: rgba(0, 0, 0, 0.05);
+  background: url(../images/wallpaper.png) repeat;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  padding: 10px;
+}
+
 .sticker_hidden .label{
   text-transform: none;
   font-size: 8px;
 }
 
+.sticker_hidden a{
+  margin: -20px 110px;
+}
+.sticker_hidden {
+  display: none;
+}
+
+
+ul.stickers:hover .sticker_hidden {
+  display: inline;
+}
 
 ul.stickers li.sticker.high a.sticker {
   background:#fcc;
@@ -221,9 +247,27 @@ body .topbar .fill {
 }
 
 .projects .span3:hover {
-  background-color: #f5f4F2;
+  background-color: #ddd;
 }
 
+.projects .span3:hover h3{
+  color: blue;
+}
+
+.projects .span3  h3 {
+  font-family: 'Cabin Sketch',Arial,sans-serif;
+  font-size: 24px;
+}
+
+
+.projects .span3  h2 {
+  font-family: "Reenie Beanie",arial,sans-serif;
+  font-size: 180%;
+}
+
+.project hr {
+  border: 1px dashed #ccc;
+}
 /*
 body {
   background: url('../images/linen.png');
