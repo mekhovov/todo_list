@@ -1,0 +1,19 @@
+%p 
+  Hi,
+  = @user.email
+%p 
+  User 
+  = @project.owner.email
+  invited you to the Project:
+%h3
+  = @project.name
+%h4
+  = @project.description
+%p
+  Please visit 
+  - if @new_user
+    %strong= "http://#{@domain}/users/password/edit?reset_password_token=#{@user.reset_password_token}" 
+    to set your password and view this project.
+  - else
+    %strong= "http://#{@domain}/projects/#{@project.id}" 
+    to view this project.

@@ -1,0 +1,11 @@
+.sidebar
+  .page-header
+    %h3 Invite Users
+    = form_for @project, :url => project_invite_path(@project) do |f|
+      - 2.times do
+        = f.fields_for :users, @project.users.build do |u|
+          .field
+            = u.label :email
+            = u.text_field :email
+      .actions
+        = f.submit 'Invite', :class => 'btn info'

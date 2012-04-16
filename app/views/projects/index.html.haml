@@ -39,7 +39,8 @@
                       =story.title
             %p 
               = link_to edit_project_path(project), :class => 'button' do
-                %span.icon.icon145{:title => 'Edit Project'}
-              = link_to project, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
-                %span.icon.icon56{:title => 'Delete Project'}
+                %span.icon.icon145{:title => 'Show Project'}
+              - if project.owner == current_user
+                = link_to project, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
+                  %span.icon.icon56{:title => 'Delete Project'}
 

@@ -23,13 +23,15 @@
               %span.label.success=story.tasks.count
               =story.title
     %p 
-      = link_to edit_project_path(@project), :class => 'button' do
-        %span.icon.icon145{:title => 'Edit Project'}
-      = link_to @project, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
-        %span.icon.icon56{:title => 'Delete Project'}
+      - if @project.owner == current_user
+        = link_to edit_project_path(@project), :class => 'button' do
+          %span.icon.icon145{:title => 'Edit Project'}
+        = link_to @project, :confirm => 'Are you sure?', :method => :delete, :class => 'button' do
+          %span.icon.icon56{:title => 'Delete Project'}
     %br
     %br
-  =render :partial => 'stories/add_story'
+  = render 'invite'
+  = render :partial => 'stories/add_story'
   %hr
   = render 'tasks/assingned'
   = render 'tasks/todo'

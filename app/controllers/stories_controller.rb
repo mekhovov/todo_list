@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     @stories = []
-    Project.find_all_by_owner_id(current_user.id).each{|proj| @stories += proj.stories}
+    (current_user.own_projects | current_user.projects).each{|proj| @stories += proj.stories}
 
     respond_to do |format|
       format.html # index.html.erb

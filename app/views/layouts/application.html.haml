@@ -31,6 +31,13 @@
               <p><strong> 
               = msg
               </strong></p>
+          - if msg.is_a?(Array)
+            - msg.each do |m|
+              = content_tag :div, :class => "alert-message block-message #{name}" do
+                <a class="close" href="#">×</a>
+                <p><strong> 
+                = m
+                </strong></p>
       = yield
       
       = render partial: "application/footer"
